@@ -1,6 +1,5 @@
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
-// ... existing code ...
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,7 +8,7 @@ builder.Services.AddControllersWithViews();
 // Initialize  Firebase Admin SDK
 FirebaseApp.Create(new AppOptions()
 {
-    Credential = GoogleCredential.FromFile("c:\\Users\\Mosaad\\Documents\\trae_projects\\firebasev1\\test-notification-94710-0a74796f9f8a.json")
+    Credential = GoogleCredential.FromFile(@"C:\Users\Mosaad.Ghanem\key.json")
 });
 
 var app = builder.Build();
@@ -27,15 +26,32 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
+app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Notification}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Notification}/{action=Index}/{id?}");
 
 
 app.Run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //{
 //    "type": "service_account",
 //  "project_id": "test-notification-94710",
